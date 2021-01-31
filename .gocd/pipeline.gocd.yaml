@@ -1,0 +1,35 @@
+# GoCD Pipeline definitions - see https://github.com/tomzo/gocd-yaml-config-plugin
+format_version: 9
+pipelines:
+  app-ui:
+    group: ui
+    materials:
+      app-ui:
+        git: https://github.com/prabhu43/spring-petclinic-angular.git
+        branch: master
+        shallow_clone: true
+        destination: src
+    stages:
+      - lint:
+          resources:
+            - ui
+          tasks:
+            - script: |
+                set -e
+                cd ./src
+                npm install
+                npm run lint
+      - build:
+          resources:
+            - ui
+          tasks:
+            - script: |
+                set -e
+                cd ./src
+                npm install
+                npm run build
+                tar czf dist.tar.gz dist/
+          artifacts:
+            - build:
+                source: src/dist.tar.gz
+                destination: artifact
