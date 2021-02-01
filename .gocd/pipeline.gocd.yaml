@@ -1,7 +1,7 @@
 # GoCD Pipeline definitions - see https://github.com/tomzo/gocd-yaml-config-plugin
 format_version: 9
 pipelines:
-  app-ui:
+  petclinic-ui:
     group: ui
     materials:
       app-ui:
