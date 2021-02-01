@@ -4,9 +4,9 @@ pipelines:
   petclinic-ui:
     group: ui
     materials:
-      app-ui:
+      petclinic-ui:
         git: https://github.com/prabhu43/spring-petclinic-angular.git
-        branch: master
+        branch: demo
         shallow_clone: true
         destination: src
     stages:
