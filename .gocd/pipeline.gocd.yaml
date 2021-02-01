@@ -19,6 +19,15 @@ pipelines:
                 cd ./src
                 npm install
                 npm run lint
+      - test:
+          resources:
+            - ui
+          tasks:
+            - script: |
+                set -e
+                cd ./src
+                npm install
+                npm run test
       - build:
           resources:
             - ui
